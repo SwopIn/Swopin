@@ -1,0 +1,19 @@
+community_url: "https://t.me/swopin"
+chat_url: "https://t.me/swopin_chat"
+
+
+messages:
+  invite: "Share this link with your friends and earn 
+  bonuses for each friend you invite:"
+  start_pre_name: "Hi👋, "
+  start_after_name: "! Welcome to Swopin!\n\nSwopin is a Decentralized p2p NFT exchange platform on The Open Network.
+  \nThis app is created to award early adopters of our platform.
+  Inside app you can claim daily tokens and do Social tasks.\n
+  \nBring all your friends and relatives 🥰.
+  \n\nMore about us in Community channel."
+  community: "Join our communities to keep up with events and news!"
+  app: "Want new button to open the app? 🤔 \n \n Here it is!"
+  community_button: "Our community ❤️"
+  chat_button: "Our discussions 🔥🔥🔥"
+  app_button: "Open app!"
+

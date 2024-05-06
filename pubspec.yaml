@@ -1,0 +1,54 @@
+name: swopin
+description: "Swopin bounty program"
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^2.0.10+1
+
+  cupertino_icons: ^1.0.6
+
+  # telegram web app plugin for flutter
+  # https://pub.dev/packages/telegram_web_app
+  telegram_web_app: ^0.1.0
+
+  # firebase
+  firebase_core: ^2.25.3
+  firebase_remote_config: ^4.3.11
+  firebase_analytics: ^10.8.4
+  envied: ^0.5.4+1
+  equatable: ^2.0.5
+  smooth_page_indicator: ^1.1.0
+
+
+  # supabase
+  supabase_flutter: ^2.5.1
+
+  # rxdart for streams
+  rxdart: ^0.27.7
+
+  # beautiful toasts
+  flutter_styled_toast: ^2.2.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+  envied_generator: ^0.5.4+1
+  build_runner: ^2.4.9
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/svg/
