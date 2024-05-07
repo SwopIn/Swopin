@@ -1,5 +1,5 @@
 # Swopin
-[![License](https://img.shields.io/github/license/swopin/swopin)](LICENSE)
+
 
 Welcome to SwopIn repository.
 If you have questions or suggestions, please file an [Issue](https://github.com/swopin/swopin/issues/new).
