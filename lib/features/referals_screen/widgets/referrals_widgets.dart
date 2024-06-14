@@ -75,7 +75,9 @@ class ItemStats extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Item(title: '$referrals Referrals', value: '+ ${formatNumber(refBalance)}'),
+          Item(
+              title: '$referrals Referrals',
+              value: '+ ${formatNumber(refBalance)}'),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24),
             child: Divider(height: 1, color: ColorsTheme.primary),
@@ -140,8 +142,9 @@ class ReferralSystemWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-         Text('Referral system', style: TextStyles.myStatsRefSysTitle
-              .copyWith(fontSize:  screenHeight * 0.03)),
+          Text('Referral system',
+              style: TextStyles.myStatsRefSysTitle
+                  .copyWith(fontSize: screenHeight * 0.03)),
           Container(
             padding: EdgeInsets.symmetric(
               vertical: screenHeight * 0.02,
@@ -169,25 +172,24 @@ class ReferralSystemWidget extends StatelessWidget {
             ),
           ),
           Container(
-              decoration: BoxDecoration(
-                gradient:ColorsTheme.gradientDefault,
-                borderRadius: BorderRadius.circular(8),
-              ),
+            decoration: BoxDecoration(
+              gradient: ColorsTheme.gradientDefault,
+              borderRadius: BorderRadius.circular(8),
+            ),
             child: ElevatedButton(
               onPressed: () async {
                 telegram.requestRefLink();
                 analytics.logRefRequest();
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                padding: EdgeInsets.symmetric(
-                    horizontal: 20, vertical: screenHeight * 0.02),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                shadowColor: Colors.transparent
-              ),
-              child:  const Text(
+                  backgroundColor: Colors.transparent,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 20, vertical: screenHeight * 0.02),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  shadowColor: Colors.transparent),
+              child: const Text(
                 'Invite a friend',
                 style: TextStyles.textInLightButton,
               ),

@@ -94,7 +94,69 @@ class Statistics {
 
   Statistics(
       {required this.totalBalance,
-        required this.totalPlayers,
-        required this.dailyUsers,
-        required this.onlineUsers});
+      required this.totalPlayers,
+      required this.dailyUsers,
+      required this.onlineUsers});
+}
+
+class StatisticButton extends StatelessWidget {
+  final String title;
+  final Function() onTap;
+
+  const StatisticButton({
+    super.key,
+    required this.title,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        gradient: ColorsTheme.gradientDefault,
+        border: Border.all(
+          color: Colors.transparent,
+          width: 2,
+        ),
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(2),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          gradient: ColorsTheme.gradientForComButton,
+        ),
+        child: ElevatedButton(
+          onPressed: () {
+            onTap();
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            padding:
+                const EdgeInsets.only(bottom: 4, top: 4, left: 14, right: 14),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ShaderMask(
+                    shaderCallback: (bounds) =>
+                        ColorsTheme.gradientBottomToTop.createShader(bounds),
+                    child: Text(
+                      title,
+                      style: TextStyles.myStatsRefSysTitle,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                  )),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

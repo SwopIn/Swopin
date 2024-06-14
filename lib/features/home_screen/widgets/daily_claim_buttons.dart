@@ -123,7 +123,9 @@ class NextClaimButton extends StatelessWidget {
                       flex: 1,
                     ),
                     const Text('Next claim',
-                        style: TextStyles.myStatsRefSysTitle),
+                        style: TextStyles.nextClaimTitle,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[

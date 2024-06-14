@@ -94,6 +94,7 @@ class _TaskSheetState extends State<TaskSheet> {
           stream.close();
           _updateUser();
           analytics.logTaskSolve();
+          telegram.hapticFeedback();
           Navigator.of(context).pop();
         }
       }, onError: (e) {
@@ -197,7 +198,8 @@ class _TaskSheetState extends State<TaskSheet> {
       decoration: const BoxDecoration(
         gradient: ColorsTheme.gradientDefault
       ),
-      child: Padding(
+      child: SingleChildScrollView(
+    child:Padding(
           padding: const EdgeInsets.only(
             top: 4.0,
           ),
@@ -275,7 +277,7 @@ class _TaskSheetState extends State<TaskSheet> {
                 const SizedBox(height: 32.0),
               ],
             ),
-          )),
+          ))),
     );
   }
 }

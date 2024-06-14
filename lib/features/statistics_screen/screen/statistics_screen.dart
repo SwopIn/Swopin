@@ -1,10 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:swopin/data/telegram/telegram_app.dart';
 import 'package:swopin/utils/analytics_service.dart';
 import 'package:swopin/utils/numbers_converter.dart';
+import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../data/remote/remote_config.dart';
+import '../../../theme/button_style.dart';
 import '../../../theme/colors.dart';
 import '../../../theme/text_styles.dart';
+import '../../common/widgets/gradient_with_state.dart';
 import '../../common/widgets/top_bar.dart';
 import '../widgets/statistics_widgets.dart';
 
@@ -29,6 +35,23 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   void initState() {
     super.initState();
     analytics.logStatScreenOpen();
+  }
+
+  Widget _claimButton() {
+    return GradientWithState(
+      isActive: true,
+      activeGradient: ColorsTheme.gradientDefault,
+      inactiveGradient: const LinearGradient(
+          colors: [ColorsTheme.subTitleComColor, ColorsTheme.subTitleComColor]),
+      borderRadius: BorderRadius.circular(8),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/referrals_chart');
+        },
+        style: ButtonsTheme.claimTaskButtonStyle,
+        child: const Text('Top referrals', style: TextStyles.claimButton),
+      ),
+    );
   }
 
   @override
@@ -61,55 +84,29 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 ItemStatistics(
                     title: 'Online users', value: _statistics.onlineUsers),
                 const SizedBox(height: 20),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    gradient: ColorsTheme.gradientDefault,
-                    border: Border.all(
-                      color: Colors.transparent,
-                      width: 2,
-                    ),
-                  ),
-                  child: Container(
-                    padding: const EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      gradient: ColorsTheme.gradientForComButton,
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamed(
-                          '/community',
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        padding: const EdgeInsets.only(
-                            bottom: 4, top: 4, left: 48, right: 48),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: ShaderMask(
-                                shaderCallback: (bounds) => ColorsTheme
-                                    .gradientBottomToTop
-                                    .createShader(bounds),
-                                child: const Text(
-                                  'Community',
-                                  style: TextStyles.myStatsRefSysTitle,
-                                  maxLines: 1,
-                                ),
-                              )),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Expanded(
+                          child: StatisticButton(
+                        title: 'Community',
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                            '/community',
+                          );
+                        },
+                      )),
+                      const SizedBox(width: 20),
+                      Expanded(
+                          child: StatisticButton(
+                        title: 'Top referrals',
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                            '/referrals_chart',
+                          );
+                        },
+                      )),
+                    ])
               ],
             ),
           ],

@@ -5,7 +5,11 @@ import 'package:swopin/data/user/user_repository.dart';
 import 'package:swopin/dependency/user_module.dart';
 import 'package:swopin/utils/analytics_service.dart';
 
+import '../../../theme/button_style.dart';
+import '../../../theme/colors.dart';
+import '../../../theme/text_styles.dart';
 import '../../../utils/numbers_converter.dart';
+import '../../common/widgets/gradient_with_state.dart';
 import '../../common/widgets/top_bar.dart';
 import '../widgets/referrals_widgets.dart';
 
@@ -79,4 +83,6 @@ class _ReferralsScreenState extends State<ReferralsScreen> {
       ),
     ));
   }
+
+
 }

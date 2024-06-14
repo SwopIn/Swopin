@@ -61,7 +61,7 @@ class TextStyles {
   static const TextStyle myStatsRefSysTitle = TextStyle(
       color: ColorsTheme.secondary,
       fontWeight: FontWeight.normal,
-      fontSize: 22,
+      fontSize: 18,
       fontStyle: FontStyle.normal);
 
   static const TextStyle hundred = TextStyle(
@@ -135,6 +135,11 @@ class TextStyles {
       fontWeight: FontWeight.normal,
       fontSize: 18,
       fontStyle: FontStyle.normal);
+  static const TextStyle nextClaimTitle = TextStyle(
+      color: ColorsTheme.secondary,
+      fontWeight: FontWeight.normal,
+      fontSize: 18,
+      fontStyle: FontStyle.normal);
 
 
   /// tasks bottom sheet
@@ -166,5 +171,30 @@ class TextStyles {
       color: ColorsTheme.primary,
       fontWeight: FontWeight.normal,
       fontSize: 24,
+      fontStyle: FontStyle.normal);
+
+  ///ref chart screen
+  static const TextStyle topUserId = TextStyle(
+      color: ColorsTheme.secondary,
+      fontWeight: FontWeight.normal,
+      fontSize: 16,
+      fontStyle: FontStyle.normal);
+
+  static const TextStyle topUserRefs = TextStyle(
+      color: ColorsTheme.secondary,
+      fontWeight: FontWeight.normal,
+      fontSize: 16,
+      fontStyle: FontStyle.normal);
+
+  static const TextStyle topUserPos = TextStyle(
+      color: ColorsTheme.secondary,
+      fontWeight: FontWeight.bold,
+      fontSize: 16,
+      fontStyle: FontStyle.normal);
+
+  static const TextStyle topUserPosAccent = TextStyle(
+      color: ColorsTheme.primary,
+      fontWeight: FontWeight.bold,
+      fontSize: 16,
       fontStyle: FontStyle.normal);
 }

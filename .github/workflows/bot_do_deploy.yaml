@@ -66,5 +66,6 @@ jobs:
             --restart always \
             --network supabase_default \
             --publish 23333:23333 \
+            --publish 23334:23334 \
             --name $(echo $CONTAINER_NAME) \
             $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)

@@ -3,10 +3,8 @@ import 'package:swopin/data/telegram/telegram_provider.dart';
 
 import 'debug_telegram_provider.dart';
 
-
 /// `TelegramApp` is a singleton class that provides access to the Telegram application.
-TelegramApp get telegram =>
-    kDebugMode ? DebugTelegramProvider.instance : TelegramProvider.instance;
+TelegramApp get telegram => kDebugMode ? DebugTelegramProvider.instance : TelegramProvider.instance;
 
 /// `TelegramApp` is an abstract class that defines the structure and behavior of a Telegram application.
 abstract class TelegramApp {
@@ -50,6 +48,9 @@ abstract class TelegramApp {
   ///
   /// The [password] parameter specifies the password to be saved.
   void savePassword(String password);
+
+  /// Create vibration, use for haptic feedback.
+  void hapticFeedback({bool softVibration = false});
 
   /// Retrieves the user's saved password.
   ///

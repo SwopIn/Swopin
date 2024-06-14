@@ -14,9 +14,9 @@ type Config struct {
 	TWAIP         string  `mapstructure:"twa_ip"`
 	ADMINS        []int64 `mapstructure:"admins"`
 
+	TwaLink      string `mapstructure:"twa_link"`
 	CommunityURL string `mapstructure:"community_url"`
 	ChatURL      string `mapstructure:"chat_url"`
-	WebAppURL    string `mapstructure:"web_app_url"`
 
 	Messages Messages
 }

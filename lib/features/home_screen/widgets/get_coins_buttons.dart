@@ -9,6 +9,7 @@ import 'package:swopin/dependency/claim_module.dart';
 import 'package:swopin/dependency/user_module.dart';
 import 'package:swopin/utils/analytics_service.dart';
 import 'package:swopin/utils/toast_helper.dart';
+import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../data/telegram/telegram_app.dart';
 import '../../../dependency/news_module.dart';
@@ -113,6 +114,7 @@ class _GetCoinsButtonsState extends State<GetCoinsButtons>
           stream.close();
           _updateUser();
           analytics.logDailyClaim();
+          telegram.hapticFeedback();
         }
       }, onError: (e) {
         ToastHelper.showSnackBar(text: e.toString(), context: context);

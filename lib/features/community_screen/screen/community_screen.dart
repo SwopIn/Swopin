@@ -4,6 +4,7 @@ import '../../../theme/colors.dart';
 import '../../../theme/text_styles.dart';
 import '../../../utils/analytics_service.dart';
 import '../../common/widgets/back_button.dart';
+import '../../common/widgets/top_bar.dart';
 import '../widgets/community_widgets.dart';
 
 class CommunityScreen extends StatefulWidget {
@@ -20,11 +21,11 @@ class _CommunityScreenState extends State<CommunityScreen> {
         description: 'Swopin announcement',
         type: 0,
         link: 'https://t.me/swopin'),
-    Channel(
+   /* Channel(
         name: 'Twitter',
         description: 'Swopin news',
         type: 1,
-        link: 'https://x.com/swopin_nft'),
+        link: 'https://x.com/swopin_nft'),*/
   ];
 
   @override
@@ -46,7 +47,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const CustomTopBarForCommunity(title: 'Community'),
+            const CustomTopBarWithBack(title: 'Community'),
             const SizedBox(height: 24),
             Expanded(
               child: Container(
@@ -84,20 +85,3 @@ class _CommunityScreenState extends State<CommunityScreen> {
   }
 }
 
-class CustomTopBarForCommunity extends StatelessWidget {
-  final String title;
-
-  const CustomTopBarForCommunity({super.key, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const CustomBackButton(),
-        Text(title, style: TextStyles.topBarTitle),
-        const SizedBox(width: 64),
-      ],
-    );
-  }
-}

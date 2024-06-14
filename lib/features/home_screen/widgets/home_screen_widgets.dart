@@ -87,6 +87,7 @@ class NavigationButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           onTap(position);
+          telegram.hapticFeedback(softVibration: true);
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: ColorsTheme.background,
@@ -131,6 +132,7 @@ class NavigationButton extends StatelessWidget {
                     ? TextStyles.activeTitleItem
                     : TextStyles.inactiveTitleItem,
                 maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ],

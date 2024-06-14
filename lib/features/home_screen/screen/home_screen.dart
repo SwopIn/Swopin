@@ -5,7 +5,11 @@ import 'package:swopin/data/user/user_repository.dart';
 import 'package:swopin/dependency/user_module.dart';
 import 'package:swopin/features/referals_screen/screen/referrals_screen.dart';
 import 'package:swopin/features/statistics_screen/screen/statistics_screen.dart';
+import '../../../data/telegram/telegram_app.dart';
+import '../../../theme/button_style.dart';
+import '../../../theme/colors.dart';
 import '../../../theme/text_styles.dart';
+import '../../common/widgets/gradient_with_state.dart';
 import '../widgets/get_coins_buttons.dart';
 import '../widgets/home_screen_widgets.dart';
 import '../widgets/tasks_pages_widget.dart';
@@ -25,7 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final ReferralsScreen _page1 = const ReferralsScreen();
   final MainScreen _page2 = const MainScreen();
   final StatisticsScreen _page3 = const StatisticsScreen();
-
 
   @override
   void initState() {
@@ -77,17 +80,25 @@ class _MainScreenState extends State<MainScreen>
   int _balance = 0;
   int _claimBalance = 0;
 
+  bool _isBetaAvailable = false;
+
   StreamSubscription? _subscription;
 
   @override
   void initState() {
     super.initState();
     _subscription = _repository.user.listen((value) {
+      _repository.checkBetaAccess(id: value.tgId, onSuccess: (){
+        setState(() {
+          _isBetaAvailable = true;
+        });
+      });
       setState(() {
         _balance = value.balance;
         _claimBalance = value.claimBalance;
       });
     });
+
   }
 
   @override
@@ -95,6 +106,23 @@ class _MainScreenState extends State<MainScreen>
     _repository.user.close();
     _subscription?.cancel();
     super.dispose();
+  }
+
+  Widget _claimButton() {
+    return GradientWithState(
+      isActive: _isBetaAvailable,
+      activeGradient: ColorsTheme.gradientDefault,
+      inactiveGradient: const LinearGradient(
+          colors: [ColorsTheme.subTitleComColor, ColorsTheme.subTitleComColor]),
+      borderRadius: BorderRadius.circular(8),
+      child: ElevatedButton(
+        onPressed: () {
+          telegram.openTelegramLink('https://t.me/Swopin_bot/swopinbeta');
+        },
+        style: ButtonsTheme.claimTaskButtonStyle,
+        child: const Text('Open Platform Beta', style: TextStyles.claimButton),
+      ),
+    );
   }
 
   @override
@@ -122,7 +150,13 @@ class _MainScreenState extends State<MainScreen>
               ),
             ),
             const Pages(),
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
+            if(_isBetaAvailable)
+            Row(
+              children: [Expanded(child: _claimButton())],
+            ),
+            if(_isBetaAvailable)
+            const SizedBox(height: 24),
           ],
         ),
       ),

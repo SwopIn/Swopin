@@ -21,7 +21,7 @@ class AnalyticsService {
 
   Future<void> logDailyClaim({String? error}) async {
     await _analytics.logEvent(
-        name: error == null ? 'daily_claim' : 'daily_claim_error',
+        name: error == null ? 'daily_claim' : 'daily_claim_e',
         parameters: {
           "time": DateTime.now().toIso8601String(),
           "userId": telegram.userId.toString(),
@@ -31,7 +31,7 @@ class AnalyticsService {
 
   Future<void> logTaskSolve({String? error}) async {
     await _analytics.logEvent(
-        name: error == null ? 'task_solve' : 'task_solve_error',
+        name: error == null ? 'task_solve' : 'task_solve_e',
         parameters: {
           "time": DateTime.now().toIso8601String(),
           "userId": telegram.userId.toString(),
@@ -72,6 +72,13 @@ class AnalyticsService {
       "time": DateTime.now().toIso8601String(),
       "userId": telegram.userId.toString(),
       "error": error
+    });
+  }
+
+  Future<void> logChartScreenOpen() async {
+    await _analytics.logEvent(name: 'open_chart', parameters: {
+      "time": DateTime.now().toIso8601String(),
+      "userId": telegram.userId.toString(),
     });
   }
 }

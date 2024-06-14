@@ -17,6 +17,10 @@ class ColorsTheme {
   static const Color startGradientForDialogColor = Color(0xFF063656);
   static const Color endGradientForDialogColor = Color(0xFF02111B);
 
+  static const Color goldColor = Color(0xFFFFD700);
+  static const Color silverColor = Color(0xFFC0C0C0);
+  static const Color bronzeColor = Color(0xFFCD7F32);
+
   static const LinearGradient gradientDefault = LinearGradient(
     colors: [startGradientColor, endGradientColor]);
 

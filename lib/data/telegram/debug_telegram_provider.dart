@@ -7,7 +7,8 @@ import 'package:telegram_web_app/telegram_web_app.dart';
 class DebugTelegramProvider implements TelegramApp {
   DebugTelegramProvider._privateConstructor();
 
-  static final tg = TelegramWebAppFake();
+  //static final tg = TelegramWebAppFake();
+  static final tg = TelegramWebApp.instance;
 
   static final DebugTelegramProvider instance =
       DebugTelegramProvider._privateConstructor();
@@ -65,5 +66,12 @@ class DebugTelegramProvider implements TelegramApp {
     } else {
       await tg.disableClosingConfirmation();
     }
+  }
+
+  @override
+  void hapticFeedback({bool softVibration = false}) {
+    tg.hapticFeedback.impactOccurred(softVibration
+        ? HapticFeedbackImpact.light
+        : HapticFeedbackImpact.medium);
   }
 }

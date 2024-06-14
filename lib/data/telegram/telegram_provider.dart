@@ -76,4 +76,11 @@ class TelegramProvider implements TelegramApp {
       await tg.disableClosingConfirmation();
     }
   }
+
+  @override
+  void hapticFeedback({bool softVibration = false}) {
+    tg.hapticFeedback.impactOccurred(softVibration
+        ? HapticFeedbackImpact.light
+        : HapticFeedbackImpact.heavy);
+  }
 }
